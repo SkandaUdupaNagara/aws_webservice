@@ -18,8 +18,13 @@ chmod 400 $KEY_NAME.pem
 # Launch a new instance with ports 80 and 22 open
 aws ec2 run-instances --image-id $AMI_ID --count 1 --instance-type t2.micro --key-name $KEY_NAME --security-group-ids $SECURITY_GROUP_ID
 
+
 # Get intance ID and public IP
 export INSTANCE_ID=$(aws ec2 describe-instances --query 'Instances[0].InstanceId' --output text)
+
+# Wait for the instance to be running
+aws ec2 wait instance-running --instance-ids $INSTANCE_ID
+
 export PUBLIC_IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
 
 # Install Nginx web server and start the service
