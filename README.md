@@ -1,7 +1,7 @@
 # aws_webservice
 # # Automated way to deploy an AWS instance that is running Nginx(port 80) webservice
 
-High-level overview of how you can create an automated way to deploy an AWS instance (free tier) that is running Nginx (port 80) web service:
+High-level overview of how to create an automated way to deploy an AWS instance (free tier) that is running Nginx (port 80) web service:
 
 This script does the following:
 
